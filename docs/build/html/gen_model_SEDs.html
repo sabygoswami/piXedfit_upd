@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Generating model SEDs &mdash; piXedfit 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Image processing" href="image_pros.html" />
+    <link rel="prev" title="SED modeling" href="ingredients_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> piXedfit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_filters.html">Managing filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_imaging_data.html">List of imaging data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_kernels_psf.html">Convolution kernels and PSFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ingredients_model.html">SED modeling</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generating model SEDs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generate-random-model-spectra-at-a-rest-frame">Generate random model spectra at a rest-frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-random-model-photometric-seds-at-an-observer-frame">Generate random model photometric SEDs at an observer-frame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_pros.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_ifs_match.html">Spatial and Spectral Matching of imaging and IFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_ing_SEDs.html">Fitting individual SED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_res_SEDs.html">Fitting spatially resolved SEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fitres.html">Analyzing fitting results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_maps_prop.html">Get maps of spatially resolved properties</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demos_pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos_sed_fitting.html">SED fitting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_images.html">piXedfit_images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_spectrophotometric.html">piXedfit_spectrophotometric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_bin.html">piXedfit_bin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_model.html">piXedfit_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_fitting.html">piXedfit_fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_analysis.html">piXedfit_analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">piXedfit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Generating model SEDs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gen_model_SEDs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="generating-model-seds">
+<span id="gen-models-seds"></span><h1>Generating model SEDs<a class="headerlink" href="#generating-model-seds" title="Permalink to this headline">¶</a></h1>
+<p>piXedfit uses FSPS for modeling the SED of galaxies. With the Python bindings via Python-FSPS, generating model SEDs can be done on the fly in the SED fitting. However, some tasks require a generation of model spectra in a fast pace that is difficult to achieve via the real time calculations. These tasks include generation of model SEDs for reference in the spectral matching between the Imaging and IFS data, SED fitting with the random dense sampling of parameter space (RDSPS), and initial fitting (i.e., burning up) before running SED fitting with the MCMC method (note that the MCMC fitting uses on-the-fly generation of model SEDs).</p>
+<p>For that reason, piXedfit provides an option of generating a set of model spectra (in a rest-frame) prior to the analyses. The models are stored in the HDF5 format. The model spectra can be generated using function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>. Please see the API reference for more detailed information about this function. In practice, user only need to generate this set of models once, then these models can be used for various further analyses to multiple galaxies.</p>
+<div class="section" id="generate-random-model-spectra-at-a-rest-frame">
+<h2>Generate random model spectra at a rest-frame<a class="headerlink" href="#generate-random-model-spectra-at-a-rest-frame" title="Permalink to this headline">¶</a></h2>
+<p>To generate random model spectra at a rest-frame, you can make a script like the following. You can adjust the modeling parameters depending on the kind of models you need in your analysis. The ranges of parameters can also be adjusted. Please see the API reference of this function <a class="reference internal" href="piXedfit_model.html#api-model"><span class="std std-ref">here</span></a>.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">piXedfit.piXedfit_model</span> <span class="kn">import</span> <span class="n">save_models_rest_spec</span>
+
+<span class="n">imf_type</span> <span class="o">=</span> <span class="mi">1</span>                    <span class="c1"># Chabrier (2003)</span>
+<span class="n">sfh_form</span> <span class="o">=</span> <span class="mi">4</span>                    <span class="c1"># double power law SFH form</span>
+<span class="n">dust_law</span> <span class="o">=</span> <span class="mi">0</span>                    <span class="c1"># Charlot &amp; Fall (2000) dust attenuation law</span>
+<span class="n">duste_switch</span> <span class="o">=</span> <span class="mi">0</span>                <span class="c1"># turn off dust emission</span>
+<span class="n">add_neb_emission</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># turn on nebular emission</span>
+<span class="n">add_agn</span> <span class="o">=</span> <span class="mi">0</span>                     <span class="c1"># turn off AGN dusty torus emission</span>
+
+<span class="n">nmodels</span> <span class="o">=</span> <span class="mi">100000</span>                <span class="c1"># number of model spectra to be generated</span>
+<span class="n">nproc</span> <span class="o">=</span> <span class="mi">20</span>                      <span class="c1"># number of processors to be used in the calculation</span>
+
+<span class="n">name_out</span> <span class="o">=</span> <span class="s1">&#39;model_rest_spec.hdf5&#39;</span>       <span class="c1"># name of the output HDF5 file</span>
+<span class="n">save_models_rest_spec</span><span class="p">(</span><span class="n">imf_type</span><span class="o">=</span><span class="n">imf_type</span><span class="p">,</span> <span class="n">sfh_form</span><span class="o">=</span><span class="n">sfh_form</span><span class="p">,</span> <span class="n">dust_ext_law</span><span class="o">=</span><span class="n">dust_ext_law</span><span class="p">,</span>
+                        <span class="n">duste_switch</span><span class="o">=</span><span class="n">duste_switch</span><span class="p">,</span> <span class="n">add_neb_emission</span><span class="o">=</span><span class="n">add_neb_emission</span><span class="p">,</span>
+                        <span class="n">add_agn</span><span class="o">=</span><span class="n">add_agn</span><span class="p">,</span><span class="n">nmodels</span><span class="o">=</span><span class="n">nmodels</span><span class="p">,</span><span class="n">nproc</span><span class="o">=</span><span class="n">nproc</span><span class="p">,</span> <span class="n">name_out</span><span class="o">=</span><span class="n">name_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The produced models will be used as input in various tasks, including spectral matching of imaging+IFS data (see <a class="reference internal" href="piXedfit_spectrophotometric.html#piXedfit.piXedfit_spectrophotometric.match_imgifs_spectral" title="piXedfit.piXedfit_spectrophotometric.match_imgifs_spectral"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_spectrophotometric.match_imgifs_spectral()</span></code></a>), SED fitting with RDSPS method, and initial fitting for the MCMC method (see API reference of the <a class="reference internal" href="piXedfit_fitting.html#api-fitting"><span class="std std-ref">piXedfit_fitting</span></a> module).</p>
+</div>
+<div class="section" id="generate-random-model-photometric-seds-at-an-observer-frame">
+<h2>Generate random model photometric SEDs at an observer-frame<a class="headerlink" href="#generate-random-model-photometric-seds-at-an-observer-frame" title="Permalink to this headline">¶</a></h2>
+<p><strong>piXedfit</strong> also provide a functionality of producing a set of model photometric SEDs (calculated at a desired redshift) for a randomly drawn parameters (but uniformly distribution within desired ranges). The models are stored in a FITS file format. This kind of data is not requested as input in most of subsequent analyses. Therefore, this functionality is only a complement to other features provided by <strong>piXedfit</strong>.</p>
+<p>To generate random model photometric SEDs at an observer-frame, you can make a script as shown in the following example.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">piXedfit.piXedfit_model</span> <span class="kn">import</span> <span class="n">save_models_photo</span>
+
+<span class="c1"># set of photometric filters</span>
+<span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;galex_fuv&#39;</span><span class="p">,</span> <span class="s1">&#39;galex_nuv&#39;</span><span class="p">,</span> <span class="s1">&#39;sdss_u&#39;</span><span class="p">,</span> <span class="s1">&#39;sdss_g&#39;</span><span class="p">,</span> <span class="s1">&#39;sdss_r&#39;</span><span class="p">,</span> <span class="s1">&#39;sdss_i&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sdss_z&#39;</span><span class="p">,</span> <span class="s1">&#39;2mass_j&#39;</span><span class="p">,</span> <span class="s1">&#39;2mass_h&#39;</span><span class="p">,</span> <span class="s1">&#39;2mass_k&#39;</span><span class="p">,</span> <span class="s1">&#39;wise_w1&#39;</span><span class="p">,</span> <span class="s1">&#39;wise_w2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;wise_w3&#39;</span><span class="p">,</span> <span class="s1">&#39;wise_w4&#39;</span><span class="p">,</span> <span class="s1">&#39;spitzer_irac_36&#39;</span><span class="p">,</span> <span class="s1">&#39;spitzer_irac_45&#39;</span><span class="p">,</span> <span class="s1">&#39;spitzer_irac_58&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;spitzer_irac_80&#39;</span><span class="p">,</span> <span class="s1">&#39;spitzer_mips_24&#39;</span><span class="p">,</span>  <span class="s1">&#39;herschel_pacs_70&#39;</span><span class="p">,</span> <span class="s1">&#39;herschel_pacs_100&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;herschel_pacs_160&#39;</span><span class="p">,</span> <span class="s1">&#39;herschel_spire_250&#39;</span><span class="p">,</span> <span class="s1">&#39;herschel_spire_350&#39;</span><span class="p">]</span>
+
+<span class="n">imf_type</span> <span class="o">=</span> <span class="mi">1</span>                    <span class="c1"># Chabrier (2003)</span>
+<span class="n">sfh_form</span> <span class="o">=</span> <span class="mi">4</span>                    <span class="c1"># double power law SFH form</span>
+<span class="n">dust_law</span> <span class="o">=</span> <span class="mi">0</span>                    <span class="c1"># Charlot &amp; Fall (2000) dust attenuation law</span>
+<span class="n">duste_switch</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># turn on dust emission</span>
+<span class="n">add_neb_emission</span> <span class="o">=</span> <span class="mi">1</span>            <span class="c1"># turn on nebular emission</span>
+<span class="n">add_agn</span> <span class="o">=</span> <span class="mi">1</span>                     <span class="c1"># turn on AGN dusty torus emission</span>
+<span class="n">add_igm_absorption</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1"># turn off absoption effect by the intergalactic medium</span>
+
+<span class="c1"># cosmology parameters</span>
+<span class="n">cosmo</span> <span class="o">=</span> <span class="mi">0</span>                       <span class="c1"># Flat LCDM</span>
+<span class="n">H0</span> <span class="o">=</span> <span class="mf">70.0</span>
+<span class="n">Om0</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="n">nmodels</span> <span class="o">=</span> <span class="mi">100000</span>                <span class="c1"># number of model spectra to be generated</span>
+<span class="n">nproc</span> <span class="o">=</span> <span class="mi">20</span>                      <span class="c1"># number of processors to be used in the calculation</span>
+
+<span class="n">gal_z</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="n">name_out_fits</span> <span class="o">=</span> <span class="s1">&#39;model_photo_seds.fits&#39;</span>
+<span class="n">save_models_photo</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="n">filters</span><span class="p">,</span> <span class="n">gal_z</span><span class="o">=</span><span class="n">gal_z</span><span class="p">,</span> <span class="n">imf_type</span><span class="o">=</span><span class="n">imf_type</span><span class="p">,</span> <span class="n">sfh_form</span><span class="o">=</span><span class="n">sfh_form</span><span class="p">,</span>
+                <span class="n">dust_ext_law</span><span class="o">=</span><span class="n">dust_ext_law</span><span class="p">,</span> <span class="n">add_igm_absorption</span><span class="o">=</span><span class="n">add_igm_absorption</span><span class="p">,</span>
+                <span class="n">duste_switch</span><span class="o">=</span><span class="n">duste_switch</span><span class="p">,</span> <span class="n">add_neb_emission</span><span class="o">=</span><span class="n">add_neb_emission</span><span class="p">,</span>
+                <span class="n">add_agn</span><span class="o">=</span><span class="n">add_agn</span><span class="p">,</span> <span class="n">nmodels</span><span class="o">=</span><span class="n">nmodels</span><span class="p">,</span> <span class="n">nproc</span><span class="o">=</span><span class="n">nproc</span><span class="p">,</span> <span class="n">cosmo</span><span class="o">=</span><span class="n">cosmo</span><span class="p">,</span>
+                <span class="n">H0</span><span class="o">=</span><span class="n">H0</span><span class="p">,</span> <span class="n">Om0</span><span class="o">=</span><span class="n">Om0</span><span class="p">,</span> <span class="n">name_out_fits</span><span class="o">=</span><span class="n">name_out_fits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="image_pros.html" class="btn btn-neutral float-right" title="Image processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ingredients_model.html" class="btn btn-neutral float-left" title="SED modeling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Abdurro&#39;uf
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

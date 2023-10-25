@@ -1,0 +1,5 @@
+photo_fluxmap fluxmap_ASASSN14co.fits
+califa_file ASASSN-14co_ZAP50_svd100.fits
+spec_smoothing 0
+kernel_sigma 3.500000
+name_out_fits specphoto_fluxmap_12073-12703.fits

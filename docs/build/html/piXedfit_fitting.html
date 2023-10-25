@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>piXedfit_fitting &mdash; piXedfit 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="piXedfit_analysis" href="piXedfit_analysis.html" />
+    <link rel="prev" title="piXedfit_model" href="piXedfit_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> piXedfit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_filters.html">Managing filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_imaging_data.html">List of imaging data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_kernels_psf.html">Convolution kernels and PSFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ingredients_model.html">SED modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen_model_SEDs.html">Generating model SEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_pros.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_ifs_match.html">Spatial and Spectral Matching of imaging and IFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_ing_SEDs.html">Fitting individual SED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_res_SEDs.html">Fitting spatially resolved SEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fitres.html">Analyzing fitting results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_maps_prop.html">Get maps of spatially resolved properties</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demos_pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos_sed_fitting.html">SED fitting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_images.html">piXedfit_images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_spectrophotometric.html">piXedfit_spectrophotometric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_bin.html">piXedfit_bin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_model.html">piXedfit_model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">piXedfit_fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_analysis.html">piXedfit_analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">piXedfit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>piXedfit_fitting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/piXedfit_fitting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-piXedfit.piXedfit_fitting">
+<span id="pixedfit-fitting"></span><span id="api-fitting"></span><h1>piXedfit_fitting<a class="headerlink" href="#module-piXedfit.piXedfit_fitting" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="piXedfit.piXedfit_fitting.priors">
+<em class="property">class </em><code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">priors</code><span class="sig-paren">(</span><em>ranges={'dust1': [0.0, 4.0], 'dust2': [0.0, 4.0], 'dust_index': [-2.2, 0.4], 'log_age': [-1.0, 1.14], 'log_alpha': [-2.0, 2.0], 'log_beta': [-2.0, 2.0], 'log_fagn': [-5.0, 0.48], 'log_gamma': [-4.0, 0.0], 'log_mass': [4.0, 12.0], 'log_mw_age': [-2.0, 1.14], 'log_qpah': [-3.0, 1.0], 'log_t0': [-1.0, 1.14], 'log_tau': [-1.0, 1.5], 'log_tauagn': [0.7, 2.18], 'log_umin': [-1.0, 1.39], 'logzsol': [-2.0, 0.2], 'z': [0.0, 1.0]}</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Functions for defining priors to be used in the Bayesian SED fitting process. First, one need to define ranges for the parameters using <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors.params_ranges" title="piXedfit.piXedfit_fitting.priors.params_ranges"><code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code></a>,
+then define shape of the prior distribution function of each parameter. The available analytic forms for the prior are uniform, Gaussian, Student’s t, and gamma functions.
+User can also choose an arbitrary one, using <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors.arbitrary" title="piXedfit.piXedfit_fitting.priors.arbitrary"><code class="xref py py-func docutils literal notranslate"><span class="pre">arbitrary()</span></code></a>. It is also possible to define a joint prior between a given parameter and stellar mass. This joint prior
+can be adopted from a known scaling relation, such as stellar mass vs metallicity relation. Note that it is not required to define range of all parameters to be involved in SED fitting.
+If range is not inputted, the default one will be used. It is also not required to define prior shape of all parameters. If not inputted, a uniform prior will be used.
+Due to the defined ranges, the analytical form is truncated at the edges defined by the range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ranges</strong> – The ranges of the parameters.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.arbitrary">
+<code class="descname">arbitrary</code><span class="sig-paren">(</span><em>param</em>, <em>values</em>, <em>prob</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.arbitrary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning an arbitrary prior.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – The parameter to be assigned with the arbitrary prior.</li>
+<li><strong>values</strong> – Array of values.</li>
+<li><strong>prob</strong> – Array of probability associated with the values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body"><p class="first last">Output prior.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.gamma">
+<code class="descname">gamma</code><span class="sig-paren">(</span><em>param</em>, <em>a</em>, <em>loc</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning a prior in the form of Gamma function to a parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – The parameter that will be assigned the Gamma prior.</li>
+<li><strong>a</strong> – A shape parameter in the gamma function.</li>
+<li><strong>loc</strong> – Peak location.</li>
+<li><strong>scale</strong> – Width of the distribution.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body"><p class="first last">Output prior.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.gaussian">
+<code class="descname">gaussian</code><span class="sig-paren">(</span><em>param</em>, <em>loc</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning Gaussian prior to a parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – The parameter that will be assigned the Gaussian prior.</li>
+<li><strong>loc</strong> – Peak location of the Gaussian prior.</li>
+<li><strong>scale</strong> – Width or standard deviation of the Gaussian prior.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body"><p class="first last">Output prior.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.joint_with_mass">
+<code class="descname">joint_with_mass</code><span class="sig-paren">(</span><em>param</em>, <em>log_mass</em>, <em>param_values</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.joint_with_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning a joint prior between a given parameter and stellar mass (log_mass).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – The parameter that will share a joint prior with the stellar mass.</li>
+<li><strong>log_mass</strong> – Array of stellar mass values.</li>
+<li><strong>param_values</strong> – Array of the parameter values. In this case, the parameter that shares a joint prior with the stellar mass.</li>
+<li><strong>scale</strong> – Array of width or standard deviations of the param_value.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body"><p class="first last">Output prior.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.params_ranges">
+<code class="descname">params_ranges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.params_ranges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for defining ranges of the parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Returns params_ranges:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body">Ranges of the parameters to be inputted into a SED fitting function.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.studentt">
+<code class="descname">studentt</code><span class="sig-paren">(</span><em>param</em>, <em>df</em>, <em>loc</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.studentt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning a prior in the form of Student’s t distribution.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>param</strong> – The parameter that will be assigned the Student’s t prior.</li>
+<li><strong>df</strong> – The degree of freedom.</li>
+<li><strong>loc</strong> – Peak location.</li>
+<li><strong>scale</strong> – Width of the distribution.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body"><p class="first last">Output prior.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="piXedfit.piXedfit_fitting.priors.uniform">
+<code class="descname">uniform</code><span class="sig-paren">(</span><em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.priors.uniform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for assigning uniform prior to a parameter.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>param</strong> – The parameter that will be assigned the uniform prior.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns prior:</th><td class="field-body">Output prior.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.singleSEDfit">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">singleSEDfit</code><span class="sig-paren">(</span><em>obs_flux</em>, <em>obs_flux_err</em>, <em>filters</em>, <em>models_spec</em>, <em>params_ranges=None</em>, <em>params_priors=None</em>, <em>fit_method='mcmc'</em>, <em>gal_z=None</em>, <em>nrands_z=10</em>, <em>add_igm_absorption=0</em>, <em>igm_type=0</em>, <em>likelihood='gauss'</em>, <em>dof=2.0</em>, <em>nwalkers=100</em>, <em>nsteps=600</em>, <em>nsteps_cut=50</em>, <em>nproc=10</em>, <em>initfit_nmodels_mcmc=30000</em>, <em>perc_chi2=90.0</em>, <em>cosmo=0</em>, <em>H0=70.0</em>, <em>Om0=0.3</em>, <em>store_full_samplers=1</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.singleSEDfit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for performing SED fitting to a single photometric SED.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>obs_flux</strong> – Input fluxes in multiple bands. The format is 1D array with a number of elements of the array should be the sama as that of obs_flux_err and filters.
+The fluxes should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>obs_flux_err</strong> – Input flux uncertainties in multiple bands. The flux uncertainties should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>filters</strong> – List of photometric filters. The list of filters recognized by piXedfit can be accesses using <a class="reference internal" href="utils.html#piXedfit.utils.filtering.list_filters" title="piXedfit.utils.filtering.list_filters"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.utils.filtering.list_filters()</span></code></a>.
+Please see <a class="reference external" href="https://pixedfit.readthedocs.io/en/latest/manage_filters.html">this page</a> for information on managing filters that include listing available filters, adding, and removing filters.</li>
+<li><strong>models_spec</strong> – Model spectral templates in the rest-frame generated prior to the SED fitting process using the function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>.
+This set of model spectra will be used in the main fitting step if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.</li>
+<li><strong>params_ranges</strong> – Ranges of the parameter defined (i.e., outputted) using the <code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code> in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>params_priors</strong> – Forms of adopted priros. The acceptable format is a list, such as params_priors=[prior1, prior2, prior3] where prior1, prior2, and prior3 are output of functions in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>fit_method</strong> – Choice of method for the SED fitting. Options are: (a)’mcmc’ for Markov Chain Monte Carlo, and (b)’rdsps’ for Random Dense Sampling of Parameter Space.</li>
+<li><strong>gal_z</strong> – Redshift of the galaxy. If gal_z=None, redshift will be a free parameter in the fitting.</li>
+<li><strong>nrands_z</strong> – Number of random redshifts to be generated (within the chosen range as set in the params_range) in the main fitting if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.
+This is only relevant if gal_z=None (i.e., photometric redshift will be activated).</li>
+<li><strong>add_igm_absorption</strong> – Switch for the IGM absorption. Options are: 0 for switch off and 1 for switch on.</li>
+<li><strong>igm_type</strong> – Choice for the IGM absorption model. Options are: 0 for Madau (1995) and 1 for Inoue+(2014).</li>
+<li><strong>likelihood</strong> – Choice of likelihood function for the RDSPS method. Only relevant if the fit_method=’rdsps’. Options are: ‘gauss’ for the Gaussian form and ‘student_t’ for the student’s t form.</li>
+<li><strong>dof</strong> – Degree of freedom (nu) in the Student’s t likelihood function. Only relevant if the fit_method=’rdsps’ and likelihood=’student_t’.</li>
+<li><strong>nwalkers</strong> – Number of walkers in the MCMC process. This parameter is only applicable if fit_method=’mcmc’.</li>
+<li><strong>nsteps</strong> – Number of steps for each walker in the MCMC process. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>nsteps_cut</strong> – Number of first steps of each walkers that will be cut when collecting the final sampler chains. Only relevant if fit_method=’mcmc’ and store_full_samplers=1.</li>
+<li><strong>nproc</strong> – Number of processors (cores) to be used in the calculation.</li>
+<li><strong>initfit_nmodels_mcmc</strong> – Number of models to be used in the initial fitting in the MCMC method. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>perc_chi2</strong> – A percentile in the set of models sorted based on the chi-square values that will be considered in the calculation of the best-fit parameters (i.e., posterior-weighted averages) in the RDSPS fitting.
+This parameter is only relevant if fit_method=’rdsps’.</li>
+<li><strong>cosmo</strong> – Choices for the cosmology. Options are: (a)’flat_LCDM’ or 0, (b)’WMAP5’ or 1, (c)’WMAP7’ or 2, (d)’WMAP9’ or 3, (e)’Planck13’ or 4, (f)’Planck15’ or 5.
+These options are similar to the choices available in the <a class="reference external" href="https://docs.astropy.org/en/stable/cosmology/#built-in-cosmologies">Astropy Cosmology</a> package.</li>
+<li><strong>H0</strong> – The Hubble constant at z=0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>Om0</strong> – The Omega matter at z=0.0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>store_full_samplers</strong> – Flag indicating whether full sampler models will be stored into the output FITS file or not. Options are: 1 or True for storing the full samplers and 0 or False otherwise.</li>
+<li><strong>name_out_fits</strong> – Name of the output FITS file. This parameter is optional. If None, a default name will be adopted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.singleSEDfit_specphoto">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">singleSEDfit_specphoto</code><span class="sig-paren">(</span><em>obs_flux</em>, <em>obs_flux_err</em>, <em>filters</em>, <em>spec_wave</em>, <em>spec_flux</em>, <em>spec_flux_err</em>, <em>models_spec</em>, <em>params_ranges=None</em>, <em>params_priors=None</em>, <em>fit_method='mcmc'</em>, <em>gal_z=None</em>, <em>nrands_z=10</em>, <em>add_igm_absorption=0</em>, <em>igm_type=0</em>, <em>spec_sigma=2.6</em>, <em>poly_order=8</em>, <em>likelihood='gauss'</em>, <em>dof=2.0</em>, <em>nwalkers=100</em>, <em>nsteps=600</em>, <em>nsteps_cut=50</em>, <em>nproc=10</em>, <em>initfit_nmodels_mcmc=30000</em>, <em>perc_chi2=90.0</em>, <em>spec_chi_sigma_clip=3.0</em>, <em>cosmo=0</em>, <em>H0=70.0</em>, <em>Om0=0.3</em>, <em>del_wave_nebem=10.0</em>, <em>store_full_samplers=1</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.singleSEDfit_specphoto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for performing SED fitting to a single spectrophotometric SED.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>obs_flux</strong> – Input fluxes in multiple bands. The format is 1D array with a number of elements of the array should be the sama as that of obs_flux_err and filters.
+The fluxes should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>obs_flux_err</strong> – Input flux uncertainties in multiple bands. The flux uncertainties should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>filters</strong> – <p>List of photometric filters. The list of filters recognized by piXedfit can be accesses using <a class="reference internal" href="utils.html#piXedfit.utils.filtering.list_filters" title="piXedfit.utils.filtering.list_filters"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.utils.filtering.list_filters()</span></code></a>.
+Please see <a class="reference external" href="https://pixedfit.readthedocs.io/en/latest/manage_filters.html">this page</a> for information on managing filters that include listing available filters, adding, and removing filters.</p>
+</li>
+<li><strong>spec_wave</strong> – 1D array of wavelength of the input spectrum.</li>
+<li><strong>spec_flux</strong> – Flux grids of the input spectrum. The fluxes should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>spec_flux_err</strong> – Flux uncertainties of the input spectrum. The flux uncertainties should be in the unit of erg/s/cm^2/Angstrom.</li>
+<li><strong>models_spec</strong> – Model spectral templates in the rest-frame generated prior to the SED fitting process using the function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>.
+This set of model spectra will be used in the main fitting step if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.</li>
+<li><strong>params_ranges</strong> – Ranges of the parameter defined (i.e., outputted) using the <code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code> in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>params_priors</strong> – Forms of adopted priros. The acceptable format is a list, such as params_priors=[prior1, prior2, prior3] where prior1, prior2, and prior3 are output of functions in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>fit_method</strong> – Choice of method for the SED fitting. Options are: (a)’mcmc’ for Markov Chain Monte Carlo, and (b)’rdsps’ for Random Dense Sampling of Parameter Space.</li>
+<li><strong>gal_z</strong> – Redshift of the galaxy. If gal_z=None, redshift will be a free parameter in the fitting.</li>
+<li><strong>spec_sigma</strong> – Spectral resolution (in Angstrom) of the input spectrum.</li>
+<li><strong>poly_order</strong> – The degree of the legendre polynomial function to be used for correcting the shape (normalization) of the model spectra.</li>
+<li><strong>nrands_z</strong> – Number of random redshifts to be generated (within the chosen range as set in the params_range) in the main fitting if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.
+This is only relevant if gal_z=None (i.e., photometric redshift will be activated).</li>
+<li><strong>add_igm_absorption</strong> – Switch for the IGM absorption. Options are: 0 for switch off and 1 for switch on.</li>
+<li><strong>igm_type</strong> – Choice for the IGM absorption model. Options are: 0 for Madau (1995) and 1 for Inoue+(2014).</li>
+<li><strong>likelihood</strong> – Choice of likelihood function for the RDSPS method. Only relevant if the fit_method=’rdsps’. Options are: ‘gauss’ for the Gaussian form and ‘student_t’ for the student’s t form.</li>
+<li><strong>dof</strong> – Degree of freedom (nu) in the Student’s t likelihood function. Only relevant if the fit_method=’rdsps’ and likelihood=’student_t’.</li>
+<li><strong>nwalkers</strong> – Number of walkers in the MCMC process. This parameter is only applicable if fit_method=’mcmc’.</li>
+<li><strong>nsteps</strong> – Number of steps for each walker in the MCMC process. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>nsteps_cut</strong> – Number of first steps of each walkers that will be cut when collecting the final sampler chains. Only relevant if fit_method=’mcmc’ and store_full_samplers=1.</li>
+<li><strong>nproc</strong> – Number of processors (cores) to be used in the calculation.</li>
+<li><strong>initfit_nmodels_mcmc</strong> – Number of models to be used in the initial fitting in the MCMC method. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>perc_chi2</strong> – A percentile in the set of models sorted based on the chi-square values that will be considered in the calculation of the best-fit parameters (i.e., posterior-weighted averages) in the RDSPS fitting.
+This parameter is only relevant if fit_method=’rdsps’.</li>
+<li><strong>spec_chi_sigma_clip</strong> – Standard deviation (sigma) to be adopted in the sigma clipping to the spectrum data points that are regarded as outliers before
+calculating chi-square in the SED fitting process. The sigma clipping is carried out based on the distribution of chi values (sum((D-M)/Derr)).</li>
+<li><strong>cosmo</strong> – <p>Choices for the cosmology. Options are: (a)’flat_LCDM’ or 0, (b)’WMAP5’ or 1, (c)’WMAP7’ or 2, (d)’WMAP9’ or 3, (e)’Planck13’ or 4, (f)’Planck15’ or 5.
+These options are similar to the choices available in the <a class="reference external" href="https://docs.astropy.org/en/stable/cosmology/#built-in-cosmologies">Astropy Cosmology</a> package.</p>
+</li>
+<li><strong>H0</strong> – The Hubble constant at z=0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>Om0</strong> – The Omega matter at z=0.0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>del_wave_nebem</strong> – This parameter defines the Wavelength region (+/- del_wave_nebem) around the emission lines that will be excluded in the fitting of spectral continuum between the model spectrum and the observed one.</li>
+<li><strong>store_full_samplers</strong> – Flag indicating whether full sampler models will be stored into the output FITS file or not. Options are: 1 or True for storing the full samplers and 0 or False otherwise.</li>
+<li><strong>name_out_fits</strong> – Name of the output FITS file. This parameter is optional. If None, a default name will be adopted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.SEDfit_from_binmap">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">SEDfit_from_binmap</code><span class="sig-paren">(</span><em>fits_binmap</em>, <em>binid_range=None</em>, <em>bin_ids=None</em>, <em>models_spec=None</em>, <em>params_ranges=None</em>, <em>params_priors=None</em>, <em>fit_method='mcmc'</em>, <em>gal_z=None</em>, <em>nrands_z=10</em>, <em>add_igm_absorption=0</em>, <em>igm_type=0</em>, <em>likelihood='gauss'</em>, <em>dof=3.0</em>, <em>nwalkers=100</em>, <em>nsteps=600</em>, <em>nsteps_cut=50</em>, <em>nproc=10</em>, <em>initfit_nmodels_mcmc=30000</em>, <em>perc_chi2=90.0</em>, <em>cosmo=0</em>, <em>H0=70.0</em>, <em>Om0=0.3</em>, <em>store_full_samplers=1</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.SEDfit_from_binmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for performing SED fitting to a photometric data cube. The data cube should has been binned using the function <code class="xref py py-func docutils literal notranslate"><span class="pre">pixel_binning()</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fits_binmap</strong> – Input FITS file of the spectrophotometric data cube that has been binned.</li>
+<li><strong>binid_range</strong> – Range of bin IDs which the SEDs are going to be fit. The accepted format is [idmin,idmax]. The ID starts from 0.
+If None, the SED fitting will be done to all of the spatial bins in the galaxy.</li>
+<li><strong>bin_ids</strong> – Bin IDs which the SEDs are going to be fit. The accepted format is 1D array.
+The ID starts from 0. Both binid_range and bin_ids can’t be None. If both of them are not None, the bin_ids will be used.</li>
+<li><strong>models_spec</strong> – Model spectral templates in the rest-frame generated prior to the SED fitting process using the function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>.
+This set of model spectra will be used in the main fitting step if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.</li>
+<li><strong>params_ranges</strong> – Ranges of the parameter defined (i.e., outputted) using the <code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code> in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>params_priors</strong> – Forms of adopted priros. The acceptable format is a list, such as params_priors=[prior1, prior2, prior3] where prior1, prior2, and prior3 are output of functions in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>fit_method</strong> – (default: ‘mcmc’)
+Choice for the fitting method. Options are: ‘mcmc’ and ‘rdsps’.</li>
+<li><strong>gal_z</strong> – Redshift of the galaxy. If gal_z=None, then redshift is taken from the header of the FITS file.
+If gal_z in the FITS header is negative, the redshift is set to be free in the SED fitting (i.e., photometric redshift).</li>
+<li><strong>nrands_z</strong> – Number of random redshifts to be generated (within the chosen range as set in the params_range) in the main fitting if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.
+This is only relevant if gal_z=None (i.e., photometric redshift will be activated).</li>
+<li><strong>add_igm_absorption</strong> – Switch for the IGM absorption. Options are: 0 for switch off and 1 for switch on.</li>
+<li><strong>igm_type</strong> – Choice for the IGM absorption model. Options are: 0 for Madau (1995) and 1 for Inoue+(2014).</li>
+<li><strong>likelihood</strong> – Choice of likelihood function for the RDSPS method. Only relevant if the fit_method=’rdsps’. Options are: ‘gauss’ for the Gaussian form and ‘student_t’ for the student’s t form.</li>
+<li><strong>dof</strong> – Degree of freedom (nu) in the Student’s t likelihood function. Only relevant if the fit_method=’rdsps’ and likelihood=’student_t’.</li>
+<li><strong>nwalkers</strong> – Number of walkers in the MCMC process. This parameter is only applicable if fit_method=’mcmc’.</li>
+<li><strong>nsteps</strong> – Number of steps for each walker in the MCMC process. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>nsteps_cut</strong> – Number of first steps of each walkers that will be cut when collecting the final sampler chains. Only relevant if fit_method=’mcmc’ and store_full_samplers=1.</li>
+<li><strong>nproc</strong> – Number of processors (cores) to be used in the calculation.</li>
+<li><strong>initfit_nmodels_mcmc</strong> – Number of models to be used in the initial fitting in the MCMC method. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>perc_chi2</strong> – A percentile in the set of models sorted based on the chi-square values that will be considered in the calculation of the best-fit parameters (i.e., posterior-weighted averages) in the RDSPS fitting.
+This parameter is only relevant if fit_method=’rdsps’.</li>
+<li><strong>cosmo</strong> – <p>Choices for the cosmology. Options are: (a)’flat_LCDM’ or 0, (b)’WMAP5’ or 1, (c)’WMAP7’ or 2, (d)’WMAP9’ or 3, (e)’Planck13’ or 4, (f)’Planck15’ or 5.
+These options are similar to the choices available in the <a class="reference external" href="https://docs.astropy.org/en/stable/cosmology/#built-in-cosmologies">Astropy Cosmology</a> package.</p>
+</li>
+<li><strong>H0</strong> – The Hubble constant at z=0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>Om0</strong> – The Omega matter at z=0.0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>store_full_samplers</strong> – Flag indicating whether full sampler models will be stored into the output FITS file or not. Options are: 1 or True for storing the full samplers and 0 or False otherwise.</li>
+<li><strong>name_out_fits</strong> – Names of output FITS files. This parameter is optional. If not None it must be in a list format with the same number of elements as the number of bins to be performed SED fitting.
+Example: name_out_fits = [‘bin1.fits’, ‘bin2.fits’, …, ‘binN.fits’]. If None, default names will be adopted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.SEDfit_from_binmap_specphoto">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">SEDfit_from_binmap_specphoto</code><span class="sig-paren">(</span><em>fits_binmap</em>, <em>binid_range=None</em>, <em>bin_ids=None</em>, <em>models_spec=None</em>, <em>params_ranges=None</em>, <em>params_priors=None</em>, <em>fit_method='mcmc'</em>, <em>gal_z=None</em>, <em>nrands_z=10</em>, <em>add_igm_absorption=0</em>, <em>igm_type=0</em>, <em>spec_sigma=2.6</em>, <em>poly_order=8</em>, <em>likelihood='gauss'</em>, <em>dof=3.0</em>, <em>nwalkers=100</em>, <em>nsteps=600</em>, <em>nsteps_cut=50</em>, <em>nproc=10</em>, <em>initfit_nmodels_mcmc=30000</em>, <em>perc_chi2=90.0</em>, <em>spec_chi_sigma_clip=3.0</em>, <em>cosmo=0</em>, <em>H0=70.0</em>, <em>Om0=0.3</em>, <em>del_wave_nebem=10.0</em>, <em>store_full_samplers=1</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.SEDfit_from_binmap_specphoto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for performing SED fitting to a spectrophotometric data cube. The data cube should has been binned using the
+function <code class="xref py py-func docutils literal notranslate"><span class="pre">pixel_binning()</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fits_binmap</strong> – Input FITS file of the spectrophotometric data cube that has been binned.</li>
+<li><strong>binid_range</strong> – Range of bin IDs which the SEDs are going to be fit. The accepted format is [idmin,idmax]. The ID starts from 0.
+If None, the SED fitting will be done to all of the spatial bins in the galaxy.</li>
+<li><strong>bin_ids</strong> – Bin IDs which the SEDs are going to be fit. The accepted format is 1D array.
+The ID starts from 0. Both binid_range and bin_ids can’t be None. If both of them are not None, the bin_ids will be used.</li>
+<li><strong>models_spec</strong> – Model spectral templates in the rest-frame generated prior to the SED fitting process using the function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>.
+This set of model spectra will be used in the main fitting step if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.</li>
+<li><strong>params_ranges</strong> – Ranges of the parameter defined (i.e., outputted) using the <code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code> in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>params_priors</strong> – Forms of adopted priros. The acceptable format is a list, such as params_priors=[prior1, prior2, prior3] where prior1, prior2, and prior3 are output of functions in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>fit_method</strong> – (default: ‘mcmc’)
+Choice for the fitting method. Options are: ‘mcmc’ and ‘rdsps’.</li>
+<li><strong>gal_z</strong> – Redshift of the galaxy. If gal_z=None, then redshift is taken from the header of the FITS file.
+If gal_z in the FITS header is negative, the redshift is set to be free in the SED fitting (i.e., photometric redshift).</li>
+<li><strong>nrands_z</strong> – Number of random redshifts to be generated (within the chosen range as set in the params_range) in the main fitting if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.
+This is only relevant if gal_z=None (i.e., photometric redshift will be activated).</li>
+<li><strong>add_igm_absorption</strong> – Switch for the IGM absorption. Options are: 0 for switch off and 1 for switch on.</li>
+<li><strong>igm_type</strong> – Choice for the IGM absorption model. Options are: 0 for Madau (1995) and 1 for Inoue+(2014).</li>
+<li><strong>spec_sigma</strong> – Spectral resolution (in Angstrom) of the input spectrum.</li>
+<li><strong>poly_order</strong> – The degree of the legendre polynomial function to be used for correcting the shape (normalization) of the model spectra.</li>
+<li><strong>likelihood</strong> – Choice of likelihood function for the RDSPS method. Only relevant if the fit_method=’rdsps’. Options are: ‘gauss’ for the Gaussian form and ‘student_t’ for the student’s t form.</li>
+<li><strong>dof</strong> – Degree of freedom (nu) in the Student’s t likelihood function. Only relevant if the fit_method=’rdsps’ and likelihood=’student_t’.</li>
+<li><strong>nwalkers</strong> – Number of walkers in the MCMC process. This parameter is only applicable if fit_method=’mcmc’.</li>
+<li><strong>nsteps</strong> – Number of steps for each walker in the MCMC process. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>nsteps_cut</strong> – Number of first steps of each walkers that will be cut when collecting the final sampler chains. Only relevant if fit_method=’mcmc’ and store_full_samplers=1.</li>
+<li><strong>nproc</strong> – Number of processors (cores) to be used in the calculation.</li>
+<li><strong>initfit_nmodels_mcmc</strong> – Number of models to be used in the initial fitting in the MCMC method. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>perc_chi2</strong> – A percentile in the set of models sorted based on the chi-square values that will be considered in the calculation of the best-fit parameters (i.e., posterior-weighted averages) in the RDSPS fitting.
+This parameter is only relevant if fit_method=’rdsps’.</li>
+<li><strong>spec_chi_sigma_clip</strong> – Standard deviation (sigma) to be adopted in the sigma clipping to the spectrum data points that are regarded as outliers before
+calculating chi-square in the SED fitting process. The sigma clipping is carried out based on the distribution of chi values (sum((D-M)/Derr)).</li>
+<li><strong>cosmo</strong> – <p>Choices for the cosmology. Options are: (a)’flat_LCDM’ or 0, (b)’WMAP5’ or 1, (c)’WMAP7’ or 2, (d)’WMAP9’ or 3, (e)’Planck13’ or 4, (f)’Planck15’ or 5.
+These options are similar to the choices available in the <a class="reference external" href="https://docs.astropy.org/en/stable/cosmology/#built-in-cosmologies">Astropy Cosmology</a> package.</p>
+</li>
+<li><strong>H0</strong> – The Hubble constant at z=0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>Om0</strong> – The Omega matter at z=0.0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>del_wave_nebem</strong> – This parameter defines the Wavelength region (+/- del_wave_nebem) around the emission lines that will be excluded in the fitting of spectral continuum between the model spectrum and the observed one.</li>
+<li><strong>store_full_samplers</strong> – Flag indicating whether full sampler models will be stored into the output FITS file or not. Options are: 1 or True for storing the full samplers and 0 or False otherwise.</li>
+<li><strong>name_out_fits</strong> – Names of output FITS files. This parameter is optional. If not None it must be in a list format with the same number of elements as the number of bins to be performed SED fitting.
+Example: name_out_fits = [‘bin1.fits’, ‘bin2.fits’, …, ‘binN.fits’]. If None, default names will be adopted.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.SEDfit_pixels_from_fluxmap">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">SEDfit_pixels_from_fluxmap</code><span class="sig-paren">(</span><em>fits_fluxmap</em>, <em>x_range=None</em>, <em>y_range=None</em>, <em>models_spec=None</em>, <em>params_ranges=None</em>, <em>params_priors=None</em>, <em>fit_method='mcmc'</em>, <em>gal_z=None</em>, <em>nrands_z=10</em>, <em>add_igm_absorption=0</em>, <em>igm_type=0</em>, <em>likelihood='gauss'</em>, <em>dof=2.0</em>, <em>nwalkers=100</em>, <em>nsteps=600</em>, <em>nsteps_cut=50</em>, <em>nproc=10</em>, <em>initfit_nmodels_mcmc=30000</em>, <em>perc_chi2=10.0</em>, <em>cosmo=0</em>, <em>H0=70.0</em>, <em>Om0=0.3</em>, <em>store_full_samplers=1</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.SEDfit_pixels_from_fluxmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for performing SED fitting to a photometric data cube on the pixel-by-pixel basis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fits_fluxmap</strong> – Input FITS file of photometric data cube. It is the ouput (or should have the same format as that of the output)
+of the image processing by <code class="xref py py-func docutils literal notranslate"><span class="pre">images_processing()</span></code> function.</li>
+<li><strong>x_range</strong> – Range of x-axis coordinate within which SED fitting will be performed to the pixels. The format is [xmin,xmax].
+If x_range=None, the whole x-axis range of the data cube is considered.</li>
+<li><strong>y_range</strong> – Range of y-axis coordinate within which SED fitting will be performed to the pixels. The format is [ymin,ymax].
+If y_range=None, the whole y-axis range of the data cube is considered.</li>
+<li><strong>models_spec</strong> – Model spectral templates in the rest-frame generated prior to the SED fitting process using the function <a class="reference internal" href="piXedfit_model.html#piXedfit.piXedfit_model.save_models_rest_spec" title="piXedfit.piXedfit_model.save_models_rest_spec"><code class="xref py py-func docutils literal notranslate"><span class="pre">piXedfit.piXedfit_model.save_models_rest_spec()</span></code></a>.
+This set of model spectra will be used in the main fitting step if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.</li>
+<li><strong>params_ranges</strong> – Ranges of the parameter defined (i.e., outputted) using the <code class="xref py py-func docutils literal notranslate"><span class="pre">params_ranges()</span></code> in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>params_priors</strong> – Forms of adopted priros. The acceptable format is a list, such as params_priors=[prior1, prior2, prior3] where prior1, prior2, and prior3 are output of functions in the <a class="reference internal" href="#piXedfit.piXedfit_fitting.priors" title="piXedfit.piXedfit_fitting.priors"><code class="xref py py-class docutils literal notranslate"><span class="pre">priors</span></code></a> class.</li>
+<li><strong>fit_method</strong> – Choice for the fitting method. Options are: ‘mcmc’ and ‘rdsps’.</li>
+<li><strong>gal_z</strong> – Redshift of the galaxy. If gal_z=None, then redshift is taken from the header of the FITS file.
+If gal_z in the FITS header is negative, the redshift is set to be free in the SED fitting (i.e., photometric redshift).</li>
+<li><strong>nrands_z</strong> – Number of random redshifts to be generated (within the chosen range as set in the params_range) in the main fitting if fit_method=’rdsps’ or initial fitting if fit_method=’mcmc’.
+This is only relevant if gal_z=None (i.e., photometric redshift will be activated).</li>
+<li><strong>add_igm_absorption</strong> – Switch for the IGM absorption. Options are: 0 for switch off and 1 for switch on.</li>
+<li><strong>igm_type</strong> – Choice for the IGM absorption model. Options are: 0 for Madau (1995) and 1 for Inoue+(2014).</li>
+<li><strong>likelihood</strong> – Choice of likelihood function for the RDSPS method. Only relevant if the fit_method=’rdsps’. Options are: ‘gauss’ for the Gaussian form and ‘student_t’ for the student’s t form.</li>
+<li><strong>dof</strong> – Degree of freedom (nu) in the Student’s t likelihood function. Only relevant if the fit_method=’rdsps’ and likelihood=’student_t’.</li>
+<li><strong>nwalkers</strong> – Number of walkers in the MCMC process. This parameter is only applicable if fit_method=’mcmc’.</li>
+<li><strong>nsteps</strong> – Number of steps for each walker in the MCMC process. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>nsteps_cut</strong> – Number of first steps of each walkers that will be cut when collecting the final sampler chains. Only relevant if fit_method=’mcmc’ and store_full_samplers=1.</li>
+<li><strong>nproc</strong> – Number of processors (cores) to be used in the calculation.</li>
+<li><strong>initfit_nmodels_mcmc</strong> – Number of models to be used in the initial fitting in the MCMC method. Only relevant if fit_method=’mcmc’.</li>
+<li><strong>perc_chi2</strong> – A percentile in the set of models sorted based on the chi-square values that will be considered in the calculation of the best-fit parameters (i.e., posterior-weighted averages) in the RDSPS fitting.
+This parameter is only relevant if fit_method=’rdsps’.</li>
+<li><strong>cosmo</strong> – <p>Choices for the cosmology. Options are: (a)’flat_LCDM’ or 0, (b)’WMAP5’ or 1, (c)’WMAP7’ or 2, (d)’WMAP9’ or 3, (e)’Planck13’ or 4, (f)’Planck15’ or 5.
+These options are similar to the choices available in the <a class="reference external" href="https://docs.astropy.org/en/stable/cosmology/#built-in-cosmologies">Astropy Cosmology</a> package.</p>
+</li>
+<li><strong>H0</strong> – The Hubble constant at z=0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>Om0</strong> – The Omega matter at z=0.0. Only relevant when cosmo=’flat_LCDM’ is chosen.</li>
+<li><strong>store_full_samplers</strong> – Flag indicating whether full sampler models will be stored into the output FITS file or not. Options are: 1 or True for storing the full samplers and 0 or False otherwise.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.maps_parameters">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">maps_parameters</code><span class="sig-paren">(</span><em>fits_binmap</em>, <em>bin_ids</em>, <em>name_sampler_fits</em>, <em>fits_fluxmap=None</em>, <em>refband_SFR=None</em>, <em>refband_SM=None</em>, <em>refband_Mdust=None</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.maps_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for constructing maps of properties of a galaxy from the collectin of fitting results of the spatial bins within the galaxy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fits_binmap</strong> – Input FITS file of the spectrophotometric data cube that has been binned.</li>
+<li><strong>bin_ids</strong> – Bin indices of the FITS files listed in name_sampler_fits input. Allowed format is a 1D array. The id starts from 0.</li>
+<li><strong>name_sampler_fits</strong> – List of the names of the FITS files containing the fitting results of spatial bins. This should have the same number of element as that of bin_ids.
+The number of element doesn’t necessarily the same as the number of bins. A missing bin will be ignored in the creation of the maps of properties.</li>
+<li><strong>fits_fluxmap</strong> – FITS file containing reduced maps of multiband fluxes, which is output of the <code class="xref py py-func docutils literal notranslate"><span class="pre">flux_map()</span></code> in the <code class="xref py py-class docutils literal notranslate"><span class="pre">images_processing</span></code> class in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">piXedfit_images</span></code> module.</li>
+<li><strong>refband_SFR</strong> – Index of band in the multiband set that is used for reference in dividing map of SFR in bin space into map of SFR in pixel space.
+If None, the band with shortest wavelength is selected.</li>
+<li><strong>refband_SM</strong> – Index of band in the multiband set that is used for reference in dividing map of stellar mass in bin space into map of stellar mass in pixel space.
+If None, the band with longest wavelength is selected.</li>
+<li><strong>refband_Mdust</strong> – Index of band/filter in the multiband set that is used for reference in dividing map of dust mass in bin space into map of dust mass in pixel space.
+If None, the band with longest wavelength is selected.</li>
+<li><strong>name_out_fits</strong> – Desired name for the output FITS file. If None, a default name will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_fitting.maps_parameters_fit_pixels">
+<code class="descclassname">piXedfit.piXedfit_fitting.</code><code class="descname">maps_parameters_fit_pixels</code><span class="sig-paren">(</span><em>fits_fluxmap</em>, <em>pix_x</em>, <em>pix_y</em>, <em>name_sampler_fits</em>, <em>name_out_fits=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_fitting.maps_parameters_fit_pixels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for calculating maps of properties from the fitting results obtained with the MCMC method on pixel basis.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>fits_fluxmap</strong> – FITS file containing reduced maps of multiband fluxes, which is output of the <code class="xref py py-func docutils literal notranslate"><span class="pre">flux_map()</span></code> in the <code class="xref py py-class docutils literal notranslate"><span class="pre">images_processing</span></code> class in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">piXedfit_images</span></code> module.</li>
+<li><strong>pix_x</strong> – x coordinates of pixels associated with the FITS files (fitting results) in name_sampler_fits input.</li>
+<li><strong>pix_y</strong> – y coordinates of pixels associated with the FITS files (fitting results) in name_sampler_fits input.</li>
+<li><strong>name_sampler_fits</strong> – List of names of the FITS files containing the fitting results.
+The three inputs of pix_x, pix_y, and name_sampler_fits should have the same number of elements.</li>
+<li><strong>name_out_fits</strong> – (optional, default: None)
+Desired name for the output FITS file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="piXedfit_analysis.html" class="btn btn-neutral float-right" title="piXedfit_analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="piXedfit_model.html" class="btn btn-neutral float-left" title="piXedfit_model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Abdurro&#39;uf
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

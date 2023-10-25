@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>piXedfit_analysis &mdash; piXedfit 1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Utils" href="utils.html" />
+    <link rel="prev" title="piXedfit_fitting" href="piXedfit_fitting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> piXedfit
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manage_filters.html">Managing filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_imaging_data.html">List of imaging data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="list_kernels_psf.html">Convolution kernels and PSFs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ingredients_model.html">SED modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen_model_SEDs.html">Generating model SEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_pros.html">Image processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_ifs_match.html">Spatial and Spectral Matching of imaging and IFS data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_ing_SEDs.html">Fitting individual SED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fit_res_SEDs.html">Fitting spatially resolved SEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_fitres.html">Analyzing fitting results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_maps_prop.html">Get maps of spatially resolved properties</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Demonstrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="demos_pixel_binning.html">Pixel binning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos_sed_fitting.html">SED fitting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_images.html">piXedfit_images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_spectrophotometric.html">piXedfit_spectrophotometric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_bin.html">piXedfit_bin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_model.html">piXedfit_model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piXedfit_fitting.html">piXedfit_fitting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">piXedfit_analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">piXedfit</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>piXedfit_analysis</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/piXedfit_analysis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-piXedfit.piXedfit_analysis">
+<span id="pixedfit-analysis"></span><h1>piXedfit_analysis<a class="headerlink" href="#module-piXedfit.piXedfit_analysis" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="piXedfit.piXedfit_analysis.plot_SED">
+<code class="descclassname">piXedfit.piXedfit_analysis.</code><code class="descname">plot_SED</code><span class="sig-paren">(</span><em>name_sampler_fits, logscale_x=True, logscale_y=True, xrange=None, yrange=None, wunit='micron', funit='erg/s/cm2/A', decompose=1, xticks=None, photo_color='red', residual_range=[-1.0, 1.0], fontsize_tick=18, fontsize_label=25, show_legend=True, loc_legend=4, fontsize_legend=18, markersize=100, lw=2.0, name_plot=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_analysis.plot_SED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for plotting best-fit (i.e., median posterior) model SED from a result of SED fitting.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name_sampler_fits</strong> – Name of input FITS file containing result of an SED fitting.</li>
+<li><strong>logscale_x</strong> – Choice for plotting x-axis in logarithmic (True) or linear scale (False).</li>
+<li><strong>logscale_y</strong> – Choice for plotting y-axis in logarithmic (True) or linear scale (False).</li>
+<li><strong>xrange</strong> – Range in x-axis. The accepted format is: [xmin,xmax]. If xrange=None, the range will be defined based on
+the wavelength range of the observed SED.</li>
+<li><strong>yrange</strong> – Range in y-axis. The accepted format is: [ymin,ymax]. If yrange=None, the range will be defined based on
+the fluxes range of the observed SED.</li>
+<li><strong>wunit</strong> – Wavelength unit. Options are: 0 or ‘angstrom’ for Angstrom unit and 1 or ‘micron’ for micron unit.</li>
+<li><strong>funit</strong> – Flux unit. Options are: 0 or ‘erg/s/cm2/A’, 1 or ‘erg/s/cm2’, and 2 or ‘Jy’.</li>
+<li><strong>decompose</strong> – Choice for showing best-fit (i.e., median posterior) model SED broken down into its components (1 or True) or just its total (0 or False).</li>
+<li><strong>xticks</strong> – xticks in list format.</li>
+<li><strong>photo_color</strong> – Color of photometric fluxes data points. The accepted colors are those available in the matplotlib.</li>
+<li><strong>residual_range</strong> – Residuals between observed SED and the median posterior model SED.
+The residual is defined as (D - M)/D, where D represents observed SED, while M is model SED.</li>
+<li><strong>fontsize_tick</strong> – Fontsize for the ticks.</li>
+<li><strong>fontsize_label</strong> – Fontsize for the labels in the x and y axes.</li>
+<li><strong>show_legend</strong> – Option for showing a legend.</li>
+<li><strong>loc_legend</strong> – Location of the legend.</li>
+<li><strong>fontsize_legend</strong> – Fontsize of the legend.</li>
+<li><strong>markersize</strong> – Size for the markers of the observed and model SEDs.</li>
+<li><strong>lw</strong> – (optional, default: 1)
+Line width for the best-fit (i.e., median posterior) model SED.</li>
+<li><strong>name_plot</strong> – Desired name for the output plot. This is optional. If None, a default name will be used.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_analysis.plot_corner">
+<code class="descclassname">piXedfit.piXedfit_analysis.</code><code class="descname">plot_corner</code><span class="sig-paren">(</span><em>name_sampler_fits, params=['log_sfr', 'log_mass', 'log_dustmass', 'log_fagn', 'log_fagn_bol', 'log_tauagn', 'log_qpah', 'log_umin', 'log_gamma', 'dust1', 'dust2', 'dust_index', 'log_mw_age', 'log_age', 'log_t0', 'log_alpha', 'log_beta', 'log_tau', 'logzsol', 'z'], label_params={'dust1': '$\\hat \\tau_{1}$', 'dust2': '$\\hat \\tau_{2}$', 'dust_index': '$n$', 'log_age': 'log($\\mathrm{age}_{\\mathrm{sys}}$)', 'log_alpha': 'log($\\alpha$)', 'log_beta': 'log($\\beta$)', 'log_dustmass': 'log($M_{dust}$)', 'log_fagn': 'log($f_{AGN,*}$)', 'log_fagn_bol': 'log($f_{AGN,bol}$)', 'log_gamma': 'log($\\gamma_{e}$)', 'log_mass': 'log($M_{*}$)', 'log_mw_age': 'log($\\mathrm{age}_{\\mathrm{MW}}$)', 'log_qpah': 'log($Q_{PAH}$)', 'log_sfr': 'log(SFR)', 'log_t0': 'log($t_{0}$)', 'log_tau': 'log($\\tau$)', 'log_tauagn': 'log($\\tau_{AGN}$)', 'log_umin': 'log($U_{min}$)', 'logzsol': 'log($Z/Z_{\\odot}$)', 'z': 'z'}, params_ranges={'dust1': [0.0, 3.0], 'dust2': [0.0, 3.0], 'dust_index': [-2.2, 0.4], 'log_age': [-3.0, 1.14], 'log_alpha': [-2.5, 2.5], 'log_beta': [-2.5, 2.5], 'log_dustmass': [-99.0, -99.0], 'log_fagn': [-5.0, 0.48], 'log_fagn_bol': [-99.0, -99.0], 'log_gamma': [-3.0, -0.824], 'log_mass': [-99.0, -99.0], 'log_mw_age': [-99.0, -99.0], 'log_qpah': [-1.0, 0.845], 'log_sfr': [-99.0, -99.0], 'log_t0': [-2.0, 1.14], 'log_tau': [-2.5, 1.5], 'log_tauagn': [0.7, 2.18], 'log_umin': [-1.0, 1.176], 'logzsol': [-2.0, 0.5], 'z': [-99.0, -99.0]}, nbins=12, fontsize_label=20, fontsize_tick=14, name_plot=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_analysis.plot_corner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for producing corner plot that shows 1D and joint 2D posterior probability distributions from a fitting result with the MCMC method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name_sampler_fits</strong> – Name of input FITS file containing result of an SED fitting.</li>
+<li><strong>params</strong> – List of parameters to be shown in the corner plot. This is optional.
+If default input is used, all the parameters incolved in the SED fitting will be shown in the corner plot.</li>
+<li><strong>label_params</strong> – Labels for the parameters. The accepted format is a python dictionary.</li>
+<li><strong>params_ranges</strong> – Desired ranges for the parameters.</li>
+<li><strong>nbins</strong> – Number of binning in the parameter space when calculating the joint posteriors.</li>
+<li><strong>fontsize_label</strong> – Fontsize of labels in the x and y axes.</li>
+<li><strong>fontsize_tick</strong> – Fontsize for the ticks.</li>
+<li><strong>name_plot</strong> – (optional, default: None)
+Desired name for the output plot.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Returns name_plot:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">Desired name for the output plot. This is optional. If None, a default name will be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="piXedfit.piXedfit_analysis.plot_sfh_mcmc">
+<code class="descclassname">piXedfit.piXedfit_analysis.</code><code class="descname">plot_sfh_mcmc</code><span class="sig-paren">(</span><em>name_sampler_fits</em>, <em>nchains=200</em>, <em>del_t=0.05</em>, <em>lbacktime_max=None</em>, <em>yrange=None</em>, <em>loc_legend=2</em>, <em>fontsize_tick=18</em>, <em>fontsize_label=25</em>, <em>fontsize_legend=26</em>, <em>logscale_x=False</em>, <em>logscale_y=False</em>, <em>name_plot=None</em><span class="sig-paren">)</span><a class="headerlink" href="#piXedfit.piXedfit_analysis.plot_sfh_mcmc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for producing SFH plot from a fitting result with the MCMC method. This is only applicable for fitting result
+that stores the full sampler chains, which is when we set store_full_samplers=1 in the SED fitting functions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name_sampler_fits</strong> – Name of input FITS file containing result of an SED fitting.</li>
+<li><strong>nchains</strong> – Number of randomly chosen sampler chains (from the full samplers stored in the FITS file) to be used for calculating the inferred SFH.</li>
+<li><strong>del_t</strong> – Width of the look back time binning in unit of Gyr for sampling the star formation history (SFH).</li>
+<li><strong>lbacktime_max</strong> – Maximum look-back time in the SFH plot. If None, the maximum look-back time is defined from the age of universe at the redshift of the galaxy.</li>
+<li><strong>yrange</strong> – Range in the y-axis.</li>
+<li><strong>loc_legend</strong> – Where to locate the legend. This is the same as in the <cite>matplotlib</cite>.</li>
+<li><strong>fontsize_tick</strong> – Fontsize for the ticks.</li>
+<li><strong>fontsize_label</strong> – Fontsize of the labels in the x and y axes.</li>
+<li><strong>fontsize_legend</strong> – Fontsize of the legend.</li>
+<li><strong>logscale_x</strong> – Choice for plotting x-axis in logarithmic (True) or linear scale (False).</li>
+<li><strong>logscale_y</strong> – Choice for plotting y-axis in logarithmic (True) or linear scale (False).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Returns name_plot:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last">Desired name for the output plot. This is optional. If None, a default name will be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="piXedfit_fitting.html" class="btn btn-neutral float-left" title="piXedfit_fitting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Abdurro&#39;uf
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
